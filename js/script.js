@@ -38,7 +38,13 @@ function appendPageLinks(list) {
     div.className = 'pagination';
     page.appendChild(div);
 
-    let createPages = list.length / 10;
+    let ul = document.createElement('ul');
+
+
+    for (let i = 0; i < list.length; i++) {
+        let createPages = list.length / 10;
+
+    }
 
 
 }
