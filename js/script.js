@@ -3,6 +3,8 @@
 const studentList = document.querySelector('.student-list');
 const li = document.querySelectorAll('.student-item');
 
+const page = document.querySelector('.page');
+
 //checking what variable li selects
 console.log(li);
 
@@ -30,17 +32,37 @@ showPage(li, 1);
 ***/
 
 function appendPageLinks(list) {
-    const div = document.querySelector('.pagination');
-    let ul = ul.document.createElement('ul');
-    let li = li.document.createElement('li');
+    let div = document.createElement('div');
+    div.className = 'pagination';
 
-
-    ul = li.parentNode;
-    ul.appendChild(li);
+    let ul = document.createElement('ul');
     div = ul.parentNode;
-    div.appendChild(ul);
-}
 
+    let li = document.createElement('li');
+    li.className = 'active';
+    li.innerHTML = "<a href='#'>1</a>"
+    ul = li.parentNode;
+
+    let li1 = document.createElement('li');
+    li1.innerHTML = "<a href='#'>2</a>";
+    ul = li1.parentNode;
+
+    let li2 = document.createElement('li');
+    li2.innerHTML = "<a href='#'>3</a>";
+    ul = li2.parentNode;
+
+    let li3 = document.createElement('li');
+    li3.innerHTML = "<a href='#'>4</a>";
+    ul = li3.parentNode;
+
+    let li4 = document.createElement('li');
+    li4.innerHTML = "<a href='#'>5</a>";
+    ul = li4.parentNode;
+
+    page.appendChild(div);
+    console.log(div);
+}
+appendPageLinks(li);
 
 
 
