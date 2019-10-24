@@ -5,9 +5,10 @@ const li = document.querySelectorAll('.student-item');
 
 
 //checking what variable li selects
+
 console.log(li);
 
-//creating function showPage 
+//creating function showPage that will show 10 studnets on each page
 
 function showPage(list, page) {
     let startIndex = (page * 10) - 10;
@@ -33,42 +34,14 @@ showPage(li, 1);
 function appendPageLinks(list) {
 
     let page = document.querySelector('.page');
-
-
     let div = document.createElement('div');
     div.className = 'pagination';
-    page = div.parentNode;
-
-    let ul = document.createElement('ul');
-    div = ul.parentNode;
-
-    let li = document.createElement('li');
-    li.className = 'active';
-    li.innerHTML = "<a href='#'>1</a>"
-    ul = li.parentNode;
-
-    let li1 = document.createElement('li');
-    li1.innerHTML = "<a href='#'>2</a>";
-    ul = li1.parentNode;
-
-    let li2 = document.createElement('li');
-    li2.innerHTML = "<a href='#'>3</a>";
-    ul = li2.parentNode;
-
-    let li3 = document.createElement('li');
-    li3.innerHTML = "<a href='#'>4</a>";
-    ul = li3.parentNode;
-
-    let li4 = document.createElement('li');
-    li4.innerHTML = "<a href='#'>5</a>";
-    ul = li4.parentNode;
-
-    div.appendChild(ul);
     page.appendChild(div);
 
-    console.log(div);
+    let createPages = list.length / 10;
+
+
 }
-appendPageLinks(li);
 
 
 
