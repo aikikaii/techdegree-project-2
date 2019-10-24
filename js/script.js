@@ -3,7 +3,6 @@
 const studentList = document.querySelector('.student-list');
 const li = document.querySelectorAll('.student-item');
 
-const page = document.querySelector('.page');
 
 //checking what variable li selects
 console.log(li);
@@ -14,10 +13,10 @@ function showPage(list, page) {
     let startIndex = (page * 10) - 10;
     let endIndex = page * 10;
     for (let i = 0; i < list.length; i++) {
-        if (i >= startIndex[list] && i < endIndex[list]) {
-            list.style.display = "list-item";
+        if (i >= startIndex && i < endIndex) {
+            list[i].style.display = "list-item";
         } else {
-            list.style.display = 'none';
+            list[i].style.display = 'none';
         }
     }
 
@@ -32,8 +31,13 @@ showPage(li, 1);
 ***/
 
 function appendPageLinks(list) {
+
+    let page = document.querySelector('.page');
+
+
     let div = document.createElement('div');
     div.className = 'pagination';
+    page = div.parentNode;
 
     let ul = document.createElement('ul');
     div = ul.parentNode;
@@ -59,7 +63,9 @@ function appendPageLinks(list) {
     li4.innerHTML = "<a href='#'>5</a>";
     ul = li4.parentNode;
 
+    div.appendChild(ul);
     page.appendChild(div);
+
     console.log(div);
 }
 appendPageLinks(li);
