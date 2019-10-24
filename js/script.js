@@ -43,7 +43,12 @@ function appendPageLinks(list) {
 
     for (let i = 0; i < list.length; i++) {
         let createPages = list.length / 10;
+        if (i < createPages) {
+            let li = document.createElement('li');
+            let a = document.createElement('a');
 
+
+        }
     }
 
 
