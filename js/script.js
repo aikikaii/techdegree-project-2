@@ -25,18 +25,16 @@ showPage(li, 1);
 
 
 
-/*** 
-   Create the `appendPageLinks function` to generate, append, and add 
-   functionality to the pagination buttons.
-***/
+//I'm creatin appendPageLinks function that appends pagination links
 
 function appendPageLinks(list) {
+
+    //creating DOM elements
 
     let page = document.querySelector('.page');
     let div = document.createElement('div');
     div.className = 'pagination';
     page.appendChild(div);
-
     let ul = document.createElement('ul');
 
     let roundNumber = Math.ceil(list.length / 10);
@@ -45,23 +43,32 @@ function appendPageLinks(list) {
         let li = document.createElement('li');
         let a = document.createElement('a');
 
+        //appending child elements to their parent elements
+
         li.appendChild(a);
         ul.appendChild(li);
         div.appendChild(ul);
-        a.href = ('#');
+        a.href = '#';
         a.textContent = i + 1;
         if (i === 0) {
             a.className = 'active';
         }
 
-
         a.addEventListener('click', (e) => {
-            showPage(list, A.target.textContent);
             let A = document.querySelectorAll('a');
-            for (let i = 0; i < A; i++) {
+            for (let i = 0; i < A.length; i++) {
+
+                //removing active class from pagination links
+
                 A[i].className = '';
             }
-            event.target.className = 'active';
+            // adding active class to link that is clicked
+
+            e.target.className = 'active';
+
+            //calling showPage function to display students 
+            showPage(list, e.target.textContent);
+
         });
     }
 
