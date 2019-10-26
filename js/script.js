@@ -3,7 +3,6 @@
 const studentList = document.querySelector('.student-list');
 const li = document.querySelectorAll('.student-item');
 
-
 //checking what variable li selects
 
 console.log(li);
@@ -40,19 +39,37 @@ function appendPageLinks(list) {
 
     let ul = document.createElement('ul');
 
+    let roundNumber = Math.ceil(list.length / 10);
 
-    for (let i = 0; i < list.length; i++) {
-        let createPages = list.length / 10;
-        if (i < createPages) {
-            let li = document.createElement('li');
-            let a = document.createElement('a');
-
-
+    for (let i = 0; i < roundNumber; i++) {
+        let li = document.createElement('li');
+        let a = document.createElement('a');
+        li.appendChild(a);
+        ul.appendChild(li);
+        if (i === 0) {
+            a.className = 'active';
         }
+        a.href = ('#');
+        a.textContent = i + 1;
+
+
+        a.addEventListener('click', (e) => {
+            let A = document.querySelectorAll('a');
+
+            for (let i = 0; i < A; i++) {
+
+                A[i].classList.remove('active');
+
+                if (e.target.classList.add('active')) {
+                    showPage(li, e.target.textContent);
+
+
+                }
+            }
+        });
     }
-
-
 }
+appendPageLinks(li);
 
 
 
