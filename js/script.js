@@ -44,33 +44,30 @@ function appendPageLinks(list) {
     for (let i = 0; i < roundNumber; i++) {
         let li = document.createElement('li');
         let a = document.createElement('a');
+
         li.appendChild(a);
         ul.appendChild(li);
+        div.appendChild(ul);
+        a.href = ('#');
+        a.textContent = i + 1;
         if (i === 0) {
             a.className = 'active';
         }
-        a.href = ('#');
-        a.textContent = i + 1;
 
 
         a.addEventListener('click', (e) => {
+            showPage(list, A.target.textContent);
             let A = document.querySelectorAll('a');
-
             for (let i = 0; i < A; i++) {
-
-                A[i].classList.remove('active');
-
-                if (e.target.classList.add('active')) {
-                    showPage(li, e.target.textContent);
-
-
-                }
+                A[i].className = '';
             }
+            event.target.className = 'active';
         });
     }
+
 }
 appendPageLinks(li);
 
 
 
-// Remember to delete the comments that came with this file, and replace them with your own code comments.
+// Remember to delete the comments that came with this file, and replace them with your own code comments
