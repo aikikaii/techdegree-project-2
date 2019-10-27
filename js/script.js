@@ -1,15 +1,75 @@
 //creating global variables
 
-const studentList = document.querySelector('.student-list');
+const page = document.querySelector('.page');
 const li = document.querySelectorAll('.student-item');
 
 //checking what variable li selects
 
 console.log(li);
 
+//dynamically creating search bar  
+
+
+function createSearchBar() {
+
+    //creating DOM elements for search bar
+
+    const pageHeader = document.querySelector('.page-header');
+
+    let divSearch = document.createElement('div');
+    divSearch.className = 'student-search';
+    pageHeader.appendChild(divSearch);
+
+    let input = document.createElement('input');
+    input.placeholder = 'Search for students...';
+    divSearch.appendChild(input);
+
+    let button = document.createElement('button');
+    button.textContent = 'Search';
+    divSearch.appendChild(button);
+    console.log(page);
+    console.log(divSearch);
+
+    //putting keyup listener on input element
+
+    input.addEventListener('keyup', function() {
+        var text = this.value;
+        for (var i = 0; i < li.length; i++) {
+            if (!li[i].innerText.toUpperCase().includes(text.toUpperCase())) {
+                li[i].style.display = 'none';
+            } else {
+                li[i].style.display = '';
+            }
+        }
+    });
+
+    //putting click event listener on button search
+
+    button.addEventListener('click', (e) => {
+        const search = e.target.textContent;
+        const ul = document.querySelector('.student-list');
+        const lis = ul.children;
+        console.log('this' + search);
+        if (search) {
+            for (let i = 0; i < lis.length; i++) {
+                if (lis[i].className === 'student-item') {
+                    lis[i].style.display = '';
+                } else {
+                    lis[i].style.display = 'none';
+                }
+            }
+        }
+    });
+}
+
+//calling createSearchBar function()
+
+createSearchBar();
+
 //creating function showPage that will show 10 studnets on each page
 
 function showPage(list, page) {
+
     let startIndex = (page * 10) - 10;
     let endIndex = page * 10;
     for (let i = 0; i < list.length; i++) {
@@ -28,10 +88,7 @@ showPage(li, 1);
 //I'm creatin appendPageLinks function that appends pagination links
 
 function appendPageLinks(list) {
-
     //creating DOM elements
-
-    let page = document.querySelector('.page');
     let div = document.createElement('div');
     div.className = 'pagination';
     page.appendChild(div);
@@ -74,7 +131,3 @@ function appendPageLinks(list) {
 
 }
 appendPageLinks(li);
-
-
-
-// Remember to delete the comments that came with this file, and replace them with your own code comments
